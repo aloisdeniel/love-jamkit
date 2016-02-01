@@ -1,12 +1,15 @@
 local graphics = {}
-local resources = {}
 
-function graphics.init(r)
-  resources = r
-  return graphics
+local Graphics = {}
+local GraphicsMt = {__index = Graphics}
+
+graphics.new = function(resources)
+  return setmetatable({
+    resources = resources
+  },GraphicsMt)
 end
 
-function graphics.drawEntities(entities)
+function Graphics:drawEntities(entities)
   for _,entity in ipairs(entities) do
     if entity:isVisible then
       self:drawEntity(entity)
@@ -15,7 +18,7 @@ function graphics.drawEntities(entities)
 end
 
 -- Resolve resource and draws entities to screen from the available entity components
-function graphics.drawEntity(entity)
+function Graphics:drawEntity(entity)
   
   local x,y = entity:getAbsolutePosition()
   local sx,sy = entity:getAbsoluteScale()
@@ -24,10 +27,10 @@ function graphics.drawEntity(entity)
   local cr,cg,cb,ca = entity:getAbsoluteColor()
   
   if entity.components.image then
-    local image = resources:image(entity.components.image)
+    local image = self.resources:image(entity.components.image)
     love.graphics.setColor(cr,cg,cb,ca)
     if entity.components.animation then    
-      local animation = self.assets.animations[entity.components.animation]
+      local animation = self.resources.animations[entity.components.animation]
       local w,h = animation:getDimensions()
       x = x - (w/2) * sx
       y = y - (h/2) * sy
@@ -56,4 +59,4 @@ function graphics.drawEntity(entity)
   end
 end
 
-return Graphics
+return graphics

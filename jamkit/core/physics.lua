@@ -1,6 +1,17 @@
 local physics = {}
 
-function physics.updateTransform(entity,dt)
+local Physics = {}
+local PhysicsMt = {__index = Physics}
+
+physics.new = function()
+  return setmetatable({
+    commands = {},
+    actions = {}
+  },PhysicsMt)
+end
+
+
+function Physics:updateTransform(entity,dt)
   
   if entity.components
   
@@ -18,4 +29,4 @@ function physics.updateTransform(entity,dt)
   
 end
 
-return Physics
+return physics
