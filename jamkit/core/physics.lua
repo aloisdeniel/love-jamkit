@@ -1,15 +1,4 @@
-local physics = {}
-
-local Physics = {}
-local PhysicsMt = {__index = Physics}
-
-physics.new = function()
-  return setmetatable({
-    commands = {},
-    actions = {}
-  },PhysicsMt)
-end
-
+local Physics = require("jamkit.utils.object")()
 
 function Physics:updateTransform(entity,dt)
   

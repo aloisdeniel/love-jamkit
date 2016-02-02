@@ -1,12 +1,7 @@
-local graphics = {}
+local Graphics = require("jamkit.utils.object")()
 
-local Graphics = {}
-local GraphicsMt = {__index = Graphics}
-
-graphics.new = function(resources)
-  return setmetatable({
-    resources = resources
-  },GraphicsMt)
+function Graphics:initialize(resources)
+  self.resources = resources
 end
 
 function Graphics:drawEntities(entities)
@@ -59,4 +54,4 @@ function Graphics:drawEntity(entity)
   end
 end
 
-return graphics
+return Graphics

@@ -69,10 +69,10 @@ local function init(opts)
   local commands = opts.commands or defaultOpts.commands
 
   -- Creating systems
-  jamkit.resources = require("jamkit.core.Resources").new()
-  jamkit.graphics = require("jamkit.core.Graphics").new(jamkit.resources)
-  jamkit.physics = require("jamkit.core.Physics").new()
-  jamkit.inputs = require("jamkit.core.Inputs").new()
+  jamkit.resources = require("jamkit.core.Resources"):new()
+  jamkit.graphics = require("jamkit.core.Graphics"):new(jamkit.resources)
+  jamkit.physics = require("jamkit.core.Physics"):new()
+  jamkit.inputs = require("jamkit.core.Inputs"):new()
 end
 
 local function update(dt)

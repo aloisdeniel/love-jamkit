@@ -5,10 +5,12 @@ local Entity = class('Entity')
 function Entity:initialize()
   self.order = 0
   self.parent = nil
+  self.isCreated = true
   self.isVisible = true
   self.isDestroyed = false
   self.scripts = {}
   self.components = {}
+  self.bounds = { x= 0, y = 0, w  = 0, h = 0 }
 end
 
 -- Parent entity
@@ -41,6 +43,16 @@ function Entity:removedScript(script)
   self.scripts[script] = nil
   script.entity = nil
   script:onDettached()
+end
+
+-- Bounds
+
+function Entity:getBounds()
+  return self.bounds.x, self.bounds.y, self.bounds.w, self.bounds.h
+end
+
+function Entity:setBounds(x,y,w,h)
+  self.bounds.x, self.bounds.y, self.bounds.w, self.bounds.h = x,y,w,h
 end
 
 -- Components

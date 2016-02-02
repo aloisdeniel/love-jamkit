@@ -1,19 +1,14 @@
-local inputs = {
-  STATE = {
-    STARTED = "started",
-    PRESSED = "pressed",
-    RELEASED = "released",
-  }
+local Inputs = require("jamkit.utils.object")()
+
+Inputs.STATE = {
+  STARTED = "started",
+  PRESSED = "pressed",
+  RELEASED = "released",
 }
 
-local Inputs = {}
-local InputsMt = {__index = Inputs}
-
-inputs.new = function()
-  return setmetatable({
-    commands = {},
-    actions = {}
-  },InputsMt)
+function Inputs:initialize()
+  self.commands = {}
+  self.actions = {}
 end
 
 function Inputs:register(name, keyboard, touch)
@@ -40,17 +35,17 @@ end
 
 function Inputs:isPressed(name)
   local action = self.actions[name]
-  return action and ((action == inputs.STATE.STARTED) or (action == inputs.STATE.PRESSED))
+  return action and ((action == Inputs.STATE.STARTED) or (action == Inputs.STATE.PRESSED))
 end
 
 function Inputs:isStarted(name)
   local action = self.actions[name]
-  return action and (action == inputs.STATE.STARTED)
+  return action and (action == Inputs.STATE.STARTED)
 end
 
 function Inputs:isReleased(name)
   local action = self.actions[name]
-  return action and (action == inputs.STATE.RELEASED)
+  return action and (action == Inputs.STATE.RELEASED)
 end
 
 function Inputs:update(dt)
@@ -74,17 +69,17 @@ function Inputs:update(dt)
     
     -- Updating start or pressed
     for name,action in pairs(actions) do
-      if (self.actions[name] == inputs.STATE.STARTED) or (self.actions[name] == inputs.STATE.PRESSED ) then 
-        actions[name] = inputs.STATE.PRESSED 
+      if (self.actions[name] == Inputs.STATE.STARTED) or (self.actions[name] == Inputs.STATE.PRESSED ) then 
+        actions[name] = Inputs.STATE.PRESSED 
       else 
-        actions[name] = inputs.STATE.STARTED
+        actions[name] = Inputs.STATE.STARTED
       end
     end
     
     -- Added released buttons
     for name, oldAction in pairs(self.actions) do
-      if (not actions[name]) and (not (oldAction == inputs.STATE.RELEASED )) then
-        actions[name] = inputs.STATE.RELEASED 
+      if (not actions[name]) and (not (oldAction == Inputs.STATE.RELEASED )) then
+        actions[name] = Inputs.STATE.RELEASED 
       end
     end
         
@@ -135,4 +130,4 @@ function Inputs:getTouch()
   return actions
 end
 
-return inputs
+return Inputs

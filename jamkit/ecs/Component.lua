@@ -21,10 +21,6 @@ function Component:getEntity()
   return self.entity
 end
 
-function Component:getEntity()
-  return self.entity
-end
-
 function Component:setEntity(e)
   if e then
     assert((not self.entity), "The component has already been added to an other entity")
