@@ -12,6 +12,19 @@ Component.static.toPropertyName = function(component)
   return component:gsub("^%u", string.lower)
 end
 
+local function copyStore(store)
+  if type(store) ~= 'table' then return store end
+  local res = {}
+  for k, v in pairs(store) do res[copyStore(k)] = copyStore(v) end
+  return res
+end
+
+function Component:clone()
+  local clone = self.class:new()
+  clone.store = copyStore(self.store)
+  return clone
+end
+
 function Component:initialize()
   self.entity = nil
   self.store = {}

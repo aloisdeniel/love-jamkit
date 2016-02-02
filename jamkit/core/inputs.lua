@@ -1,6 +1,7 @@
-local Inputs = require("jamkit.utils.object")()
+local Parent = require("jamkit.ecs.System")
+local Inputs = class("Inputs", Parent)
 
-Inputs.STATE = {
+Inputs.static.STATE = {
   STARTED = "started",
   PRESSED = "pressed",
   RELEASED = "released",

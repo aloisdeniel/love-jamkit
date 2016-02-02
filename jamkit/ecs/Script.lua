@@ -1,7 +1,8 @@
-local Script = class('Script')
+local Parent = require('jamkit.ecs.Component')
+local Script = class('Script',Parent)
 
 function Script:initialize()
-  self.entity = nil
+  Parent.initialize(self)
 end
 
 function Script:onAttached()

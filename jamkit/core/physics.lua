@@ -1,4 +1,5 @@
-local Physics = require("jamkit.utils.object")()
+local Parent = require("jamkit.ecs.System")
+local Physics = class("Inputs", Parent)
 
 function Physics:updateTransform(entity,dt)
   

@@ -2,31 +2,58 @@ local Component = require("jamkit.ecs.Component")
 
 local Entity = class('Entity')
 
+Entity.static.lastUid = 0
+Entity.static.createUid = function() 
+  Entity.static.lastUid = Entity.static.lastUid + 1
+  return Entity.static.lastUid
+end
+
 function Entity:initialize()
-  self.order = 0
+  self.uid = Entity.static.createUid()
   self.parent = nil
-  self.isCreated = true
   self.isVisible = true
   self.isDestroyed = false
   self.scripts = {}
   self.components = {}
-  self.bounds = { x= 0, y = 0, w  = 0, h = 0 }
 end
 
--- Parent entity
-
-function Entity:attach(parent)
-  assert((not self.parent),"entity is already attached to an other entity")
-  self.parent = parent
+function Entity:clone()
+  local clone = self.class:new()
+  -- Cloning all components
+  for name,component in ipairs(self.components) do
+    local componentClone = component:clone()
+    clone:add(componentClone)
+  end
+  return clone
 end
 
-function Entity:dettach(parent)
-  assert(self.parent and (self.parent == parent),"entity isn't attached to the given one")
-  self.parent = nil
+-- Serialization (all components)
+
+function Entity:serialize()
+  if not self.isDestroyed then
+    local result = {
+      uid= self.uid,
+      layer = self.layer,
+      components = {}
+    }
+    for name, component in pairs(self.components) do
+      result.components[name] = component.store
+    end
+    for name, script in pairs(self.scripts) do
+      result.script[name] = component.store
+    end
+  end
 end
 
-function Entity:getParent()
-  return self.parent
+function Entity:deserialize(data)
+  if data.uid then
+    self.uid = data.uid
+    Entity.static.lastUid = math.max(Entity.static.lastUid,data.uid) -- Updating uid counter
+  end
+  self.layer = data.layer
+  for name, store in pairs(data.components) do
+    self.components[name].store = store
+  end
 end
 
 -- Scripts
@@ -45,17 +72,16 @@ function Entity:removedScript(script)
   script:onDettached()
 end
 
--- Bounds
-
-function Entity:getBounds()
-  return self.bounds.x, self.bounds.y, self.bounds.w, self.bounds.h
-end
-
-function Entity:setBounds(x,y,w,h)
-  self.bounds.x, self.bounds.y, self.bounds.w, self.bounds.h = x,y,w,h
-end
-
 -- Components
+
+function Entity:has(component)
+  return self:get(component)
+end
+
+function Entity:get(component)
+  local name = Component.toPropertyName(component)
+  return self.components[name]
+end
 
 function Entity:add(component)
   local name = Component.toPropertyName(component)

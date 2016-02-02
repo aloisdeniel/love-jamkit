@@ -1,4 +1,5 @@
-local Graphics = require("jamkit.utils.object")()
+local Parent = require("jamkit.ecs.System")
+local Graphics = class("Graphics", Parent)
 
 function Graphics:initialize(resources)
   self.resources = resources

@@ -1,4 +1,4 @@
-local Parent = require("jamkit.ecs.Component")
+local Parent = require("jamkit.components.renderers.Renderer")
 local Sprite = class('Sprite',Parent)
 
 function Position:initialize(image)
