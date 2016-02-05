@@ -13,16 +13,86 @@ function Position:initialize()
   self.store.acceleration = { x=0, y=0 }
 end
 
--- Value
+--- @section Value
 
+--- Sets the current position coordinates.
+-- @return The position coordinates after modification
 function Position:set(x,y)
   self.store.x, self.store.y = x,y
+  return self:get()
 end
 
+--- Gets the current position coordinates.
+-- @return x,y coordinates
 function Position:get()
   return self.store.x, self.store.y
 end
 
+--- Adds values to current position coordinates.
+-- @param x The value to add to x current coordinate
+-- @param y The value to add to y current coordinate
+-- @return The position coordinates after modification
+function Position:add(x,y)
+  local cx,cy = self:get()
+  self:set(cx+x,cy+y)
+  return self:get()
+end
+
+--- @section Velocity
+
+--- Sets the current velocity.
+-- @param x The x coordinate velocity
+-- @param y The y coordinate velocity
+-- @return The velocity after modification
+function Position:setVelocity(x,y)
+  self.store.velocity.x, self.store.velocity.y = x,y
+  return self:getVelocity()
+end
+
+--- Gets the current velocity.
+-- @return x,y coordinate velocities
+function Position:getVelocity()
+  return self.store.velocity.x, self.store.velocity.y
+end
+
+--- Adds values to current coordinates velocity.
+-- @param x The value to add to x current velocity
+-- @param y The value to add to y current velocity
+-- @return The velocity after modification
+function Position:addVelocity(x,y)
+  local cx,cy = self:getVelocity()
+  self:setVelocity(cx+x,cy+y)
+  return self:getVelocity()
+end
+
+-- Acceleration
+
+--- Sets the current acceleration.
+-- @param x The x coordinate acceleration
+-- @param y The y coordinate acceleration
+-- @return The acceleration after modification
+function Position:setAcceleration(x,y)
+  self.store.acceleration.x, self.store.acceleration.y = x,y
+  return self:getAcceleration()
+end
+
+--- Gets the current acceleration.
+-- @return x,y coordinate accelerations
+function Position:getAcceleration()
+  return self.store.acceleration.x, self.store.acceleration.y
+end
+
+--- Adds values to current coordinates acceleration.
+-- @param x The value to add to x current acceleration
+-- @param y The value to add to y current acceleration
+-- @return The acceleration after modification
+function Position:addAcceleration(x,y)
+  local cx,cy = self:getAcceleration()
+  self:setAcceleration(cx+x,cy+y)
+  return self:getAcceleration()
+end
+
+--[[ --Should be in systems
 function Position:_getParentValue()
   local entity = self.getEntity()
   if entity then
@@ -45,24 +115,6 @@ function Position:getAbsolute()
   return x + px, y + py
 end
 
--- Velocity
-
-function Position:setVelocity(x,y)
-  self.store.velocity.x, self.store.velocity.y = x,y
-end
-
-function Position:getVelocity()
-  return self.store.velocity.x, self.store.velocity.y
-end
-
--- Acceleration
-
-function Position:setAcceleration(x,y)
-  self.store.acceleration.x, self.store.acceleration.y = x,y
-end
-
-function Position:getAcceleration()
-  return self.store.acceleration.x, self.store.acceleration.y
-end
+]]
 
 return Position
