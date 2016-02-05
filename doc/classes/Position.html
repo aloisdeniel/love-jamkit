@@ -27,7 +27,7 @@
 <h1>jamkit</h1>
 
 <ul>
-  <li><a href="../index.html">Index</a></li>
+  <li><a href="../doc.html">Index</a></li>
 </ul>
 
 <h2>Contents</h2>
@@ -40,7 +40,8 @@
 <ul class="nowrap">
   <li><a href="../classes/Attached.html">Attached</a></li>
   <li><a href="../classes/Body.html">Body</a></li>
-  <li><a href="../classes/Bounds.html">Bounds</a></li>
+  <li><a href="../classes/Renderer.html">Renderer</a></li>
+  <li><a href="../classes/Sprite.html">Sprite</a></li>
   <li><a href="../classes/Color.html">Color</a></li>
   <li><strong>Position</strong></li>
   <li><a href="../classes/Rotation.html">Rotation</a></li>
@@ -60,7 +61,11 @@
 
 <h1>Class <code>Position</code></h1>
 <p>A component that represents the current position of an entity.</p>
-<p></p>
+<p>
+
+
+<h3>Extends : <a href="../classes/Component.html#">Component</a></h3>
+</p>
 
 
 <h2><a href="#"> </a></h2>
@@ -74,7 +79,7 @@
 	<td class="summary">Gets the current position coordinates.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Position:add">Position:add (x, y, delta)</a></td>
+	<td class="name" nowrap><a href="#Position:add">Position:add (x, y[, delta])</a></td>
 	<td class="summary">Adds values to current position coordinates.</td>
 	</tr>
 	<tr>
@@ -86,7 +91,7 @@
 	<td class="summary">Gets the current velocity.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Position:addVelocity">Position:addVelocity (x, y, delta)</a></td>
+	<td class="name" nowrap><a href="#Position:addVelocity">Position:addVelocity (x, y[, delta])</a></td>
 	<td class="summary">Adds values to current coordinates velocity.</td>
 	</tr>
 	<tr>
@@ -98,7 +103,7 @@
 	<td class="summary">Gets the current acceleration.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Position:addAcceleration">Position:addAcceleration (x, y, delta)</a></td>
+	<td class="name" nowrap><a href="#Position:addAcceleration">Position:addAcceleration (x, y[, delta])</a></td>
 	<td class="summary">Adds values to current coordinates acceleration.</td>
 	</tr>
 </table>
@@ -121,16 +126,19 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">x</span>
-
+            <span class="types"><span class="type">number</span></span>
+         The x coordinate
         </li>
         <li><span class="parameter">y</span>
-
+            <span class="types"><span class="type">number</span></span>
+         The y coordinate
         </li>
     </ul>
 
     <h3>Returns:</h3>
     <ol>
 
+           <span class="types"><span class="type">number,number</span></span>
         The position coordinates after modification
     </ol>
 
@@ -150,7 +158,8 @@
     <h3>Returns:</h3>
     <ol>
 
-        x,y coordinates
+           <span class="types"><span class="type">number,number</span></span>
+        The x,y coordinates
     </ol>
 
 
@@ -159,7 +168,7 @@
 </dd>
     <dt>
     <a name = "Position:add"></a>
-    <strong>Position:add (x, y, delta)</strong>
+    <strong>Position:add (x, y[, delta])</strong>
     </dt>
     <dd>
     Adds values to current position coordinates.
@@ -168,19 +177,24 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">x</span>
+            <span class="types"><span class="type">number</span></span>
          The value to add to x current coordinate
         </li>
         <li><span class="parameter">y</span>
+            <span class="types"><span class="type">number</span></span>
          The value to add to y current coordinate
         </li>
         <li><span class="parameter">delta</span>
-         *(optional)* A factor applied to added x and y values
+            <span class="types"><span class="type">number</span></span>
+         <em>(optional)</em> A factor applied to added x and y values
+         (<em>optional</em>)
         </li>
     </ul>
 
     <h3>Returns:</h3>
     <ol>
 
+           <span class="types"><span class="type">number,number</span></span>
         The position coordinates after modification
     </ol>
 
@@ -199,9 +213,11 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">x</span>
+            <span class="types"><span class="type">number</span></span>
          The x coordinate velocity
         </li>
         <li><span class="parameter">y</span>
+            <span class="types"><span class="type">number</span></span>
          The y coordinate velocity
         </li>
     </ul>
@@ -209,6 +225,7 @@
     <h3>Returns:</h3>
     <ol>
 
+           <span class="types"><span class="type">number,number</span></span>
         The velocity after modification
     </ol>
 
@@ -228,7 +245,8 @@
     <h3>Returns:</h3>
     <ol>
 
-        x,y coordinate velocities
+           <span class="types"><span class="type">number,number</span></span>
+        The x,y coordinate velocities
     </ol>
 
 
@@ -237,7 +255,7 @@
 </dd>
     <dt>
     <a name = "Position:addVelocity"></a>
-    <strong>Position:addVelocity (x, y, delta)</strong>
+    <strong>Position:addVelocity (x, y[, delta])</strong>
     </dt>
     <dd>
     Adds values to current coordinates velocity.
@@ -246,19 +264,24 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">x</span>
+            <span class="types"><span class="type">number</span></span>
          The value to add to x current velocity
         </li>
         <li><span class="parameter">y</span>
+            <span class="types"><span class="type">number</span></span>
          The value to add to y current velocity
         </li>
         <li><span class="parameter">delta</span>
-         *(optional)* A factor applied to added x and y values
+            <span class="types"><span class="type">number</span></span>
+         <em>(optional)</em> A factor applied to added x and y values
+         (<em>optional</em>)
         </li>
     </ul>
 
     <h3>Returns:</h3>
     <ol>
 
+           <span class="types"><span class="type">number,number</span></span>
         The velocity after modification
     </ol>
 
@@ -277,9 +300,11 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">x</span>
+            <span class="types"><span class="type">number</span></span>
          The x coordinate acceleration
         </li>
         <li><span class="parameter">y</span>
+            <span class="types"><span class="type">number</span></span>
          The y coordinate acceleration
         </li>
     </ul>
@@ -287,6 +312,7 @@
     <h3>Returns:</h3>
     <ol>
 
+           <span class="types"><span class="type">number,number</span></span>
         The acceleration after modification
     </ol>
 
@@ -306,7 +332,8 @@
     <h3>Returns:</h3>
     <ol>
 
-        x,y coordinate accelerations
+           <span class="types"><span class="type">number,number</span></span>
+        The x,y coordinate accelerations
     </ol>
 
 
@@ -315,7 +342,7 @@
 </dd>
     <dt>
     <a name = "Position:addAcceleration"></a>
-    <strong>Position:addAcceleration (x, y, delta)</strong>
+    <strong>Position:addAcceleration (x, y[, delta])</strong>
     </dt>
     <dd>
     Adds values to current coordinates acceleration.
@@ -324,19 +351,24 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">x</span>
+            <span class="types"><span class="type">number</span></span>
          The value to add to x current acceleration
         </li>
         <li><span class="parameter">y</span>
+            <span class="types"><span class="type">number</span></span>
          The value to add to y current acceleration
         </li>
         <li><span class="parameter">delta</span>
-         *(optional)* A factor applied to added x and y values
+            <span class="types"><span class="type">number</span></span>
+         <em>(optional)</em> A factor applied to added x and y values
+         (<em>optional</em>)
         </li>
     </ul>
 
     <h3>Returns:</h3>
     <ol>
 
+           <span class="types"><span class="type">number,number</span></span>
         The acceleration after modification
     </ol>
 
@@ -351,7 +383,7 @@
 </div> <!-- id="main" -->
 <div id="about">
 <i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.3</a></i>
-<i style="float:right;">Last updated 2016-02-05 14:20:04 </i>
+<i style="float:right;">Last updated 2016-02-06 00:11:38 </i>
 </div> <!-- id="about" -->
 </div> <!-- id="container" -->
 </body>

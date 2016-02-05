@@ -1,4 +1,6 @@
 --- A component that represents the current color of an entity.
+--
+--### Extends : @{Component}
 -- @classmod Color
 
 local Parent = require("jamkit.ecs.Component")
@@ -17,11 +19,11 @@ end
 --- @section Value
 
 --- Sets the color.
--- @param r The red component
--- @param g The green component
--- @param b The blue component
--- @param a The alpha component
--- @return The r,g,b,a components after modification
+-- @int r The red component
+-- @int g The green component
+-- @int b The blue component
+-- @int a The alpha component
+-- @treturn int,int,int,int The r,g,b,a components after modification
 function Color:set(r,g,b,a)
   self.store.r = math.max(0,math.min(255,r or 255))
   self.store.g = math.max(0,math.min(255,g or 255))
@@ -31,18 +33,18 @@ function Color:set(r,g,b,a)
 end
 
 --- Gets the color.
--- @return r,g,b,a components.
+-- @treturn int,int,int,int r,g,b,a components.
 function Color:get()
   return self.store.r, self.store.g, self.store.b, self.store.a
 end
 
 --- Adds values to current position coordinates.
--- @param r The value add to red component
--- @param g The value add to green component
--- @param b The value add to blue component
--- @param a The value add to alpha component
--- @param delta *(optional)* A factor applied to added values
--- @return The r,g,b,a components after modification
+-- @int[opt] r The value add to red component
+-- @int[opt] g The value add to green component
+-- @int[opt] b The value add to blue component
+-- @int[opt] a The value add to alpha component
+-- @number[opt] delta *(optional)* A factor applied to added values
+-- @treturn int,int,int,int The r,g,b,a components after modification
 function Color:add(r,g,b,a,delta)
   delta = delta or 1
   a = a or 0
@@ -57,11 +59,11 @@ end
 --- @section Velocity
 
 --- Sets the current velocity.
--- @param r The red component velocity
--- @param g The green component velocity
--- @param b The blue component velocity
--- @param a The alpha component velocity
--- @return The velocity after modification
+-- @int[opt] r The red component velocity
+-- @int[opt] g The green component velocity
+-- @int[opt] b The blue component velocity
+-- @int[opt] a The alpha component velocity
+-- @treturn int,int,int,int The velocity after modification
 function Rotation:setVelocity(r,g,b,a)
   local vel = self.store.velocity
   vel.r = a or 0
@@ -72,7 +74,7 @@ function Rotation:setVelocity(r,g,b,a)
 end
 
 --- Gets the current velocity.
--- @return x,y coordinate velocities
+-- @treturn int,int,int,int The r,g,b,a component velocities
 function Rotation:getVelocity()
   local vel = self.store.velocity
   return vel.r,vel.g,vel.b,vel.a
@@ -81,11 +83,11 @@ end
 --- @section Acceleration
 
 --- Sets the current acceleration.
--- @param r The red component acceleration
--- @param g The green component acceleration
--- @param b The blue component acceleration
--- @param a The alpha component acceleration
--- @return The acceleration after modification
+-- @int r[opt] The red component acceleration
+-- @int g[opt] The green component acceleration
+-- @int b[opt] The blue component acceleration
+-- @int a[opt] The alpha component acceleration
+-- @treturn int,int,int,int The acceleration after modification
 function Rotation:setAcceleration(r,g,b,a)
   local acc = self.store.acceleration
   acc.r = a or 0
@@ -96,41 +98,10 @@ function Rotation:setAcceleration(r,g,b,a)
 end
 
 --- Gets the current acceleration.
--- @return r,g,b,a components accelerations
+-- @treturn int,int,int,int r,g,b,a components accelerations
 function Rotation:getAcceleration()
   local acc = self.store.acceleration
   return acc.r,acc.g,acc.b,acc.a
 end
-
---[[ -- Must be in systems (Absolute)
-function Color:_getParentValue()
-  local entity = self.getEntity()
-  if entity then
-    local parent = entity.getParent()
-    if parent and parent.components.color then
-      return parent.components.color:get()
-    end
-  end
-  return 255,255,255,255
-end
-
-function Color:setAbsolute(r,g,b,a)
-  local pr,pg,pb,pa = self:_getParentValue()
-  r = (r / pr) * 255
-  g = (g / pg) * 255
-  b = (b / pb) * 255
-  a = (a / pa) * 255
-  self:set(x - px, y - py)
-end
-
-function Color:getAbsolute()
-  local r,g,b,a = self:get()
-  local pr,pg,pb,pa = self:_getParentValue()
-  r = (r * pr) / 255
-  g = (g * pg) / 255
-  b = (b * pb) / 255
-  a = (a * pa) / 255
-  return r,g,b,a
-end ]]
 
 return Color

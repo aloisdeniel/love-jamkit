@@ -27,7 +27,7 @@
 <h1>jamkit</h1>
 
 <ul>
-  <li><a href="../index.html">Index</a></li>
+  <li><a href="../doc.html">Index</a></li>
 </ul>
 
 <h2>Contents</h2>
@@ -40,7 +40,8 @@
 <ul class="nowrap">
   <li><a href="../classes/Attached.html">Attached</a></li>
   <li><a href="../classes/Body.html">Body</a></li>
-  <li><a href="../classes/Bounds.html">Bounds</a></li>
+  <li><a href="../classes/Renderer.html">Renderer</a></li>
+  <li><a href="../classes/Sprite.html">Sprite</a></li>
   <li><strong>Color</strong></li>
   <li><a href="../classes/Position.html">Position</a></li>
   <li><a href="../classes/Rotation.html">Rotation</a></li>
@@ -60,7 +61,11 @@
 
 <h1>Class <code>Color</code></h1>
 <p>A component that represents the current color of an entity.</p>
-<p></p>
+<p>
+
+
+<h3>Extends : <a href="../classes/Component.html#">Component</a></h3>
+</p>
 
 
 <h2><a href="#"> </a></h2>
@@ -74,11 +79,11 @@
 	<td class="summary">Gets the color.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Color:add">Color:add (r, g, b, a, delta)</a></td>
+	<td class="name" nowrap><a href="#Color:add">Color:add ([r[, g[, b[, a[, delta]]]]])</a></td>
 	<td class="summary">Adds values to current position coordinates.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Rotation:setVelocity">Rotation:setVelocity (r, g, b, a)</a></td>
+	<td class="name" nowrap><a href="#Rotation:setVelocity">Rotation:setVelocity ([r[, g[, b[, a]]]])</a></td>
 	<td class="summary">Sets the current velocity.</td>
 	</tr>
 	<tr>
@@ -113,15 +118,19 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">r</span>
+            <span class="types"><span class="type">int</span></span>
          The red component
         </li>
         <li><span class="parameter">g</span>
+            <span class="types"><span class="type">int</span></span>
          The green component
         </li>
         <li><span class="parameter">b</span>
+            <span class="types"><span class="type">int</span></span>
          The blue component
         </li>
         <li><span class="parameter">a</span>
+            <span class="types"><span class="type">int</span></span>
          The alpha component
         </li>
     </ul>
@@ -129,6 +138,7 @@
     <h3>Returns:</h3>
     <ol>
 
+           <span class="types"><span class="type">int,int,int,int</span></span>
         The r,g,b,a components after modification
     </ol>
 
@@ -148,6 +158,7 @@
     <h3>Returns:</h3>
     <ol>
 
+           <span class="types"><span class="type">int,int,int,int</span></span>
         r,g,b,a components.
     </ol>
 
@@ -157,7 +168,7 @@
 </dd>
     <dt>
     <a name = "Color:add"></a>
-    <strong>Color:add (r, g, b, a, delta)</strong>
+    <strong>Color:add ([r[, g[, b[, a[, delta]]]]])</strong>
     </dt>
     <dd>
     Adds values to current position coordinates.
@@ -166,25 +177,36 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">r</span>
+            <span class="types"><span class="type">int</span></span>
          The value add to red component
+         (<em>optional</em>)
         </li>
         <li><span class="parameter">g</span>
+            <span class="types"><span class="type">int</span></span>
          The value add to green component
+         (<em>optional</em>)
         </li>
         <li><span class="parameter">b</span>
+            <span class="types"><span class="type">int</span></span>
          The value add to blue component
+         (<em>optional</em>)
         </li>
         <li><span class="parameter">a</span>
+            <span class="types"><span class="type">int</span></span>
          The value add to alpha component
+         (<em>optional</em>)
         </li>
         <li><span class="parameter">delta</span>
-         *(optional)* A factor applied to added values
+            <span class="types"><span class="type">number</span></span>
+         <em>(optional)</em> A factor applied to added values
+         (<em>optional</em>)
         </li>
     </ul>
 
     <h3>Returns:</h3>
     <ol>
 
+           <span class="types"><span class="type">int,int,int,int</span></span>
         The r,g,b,a components after modification
     </ol>
 
@@ -194,7 +216,7 @@
 </dd>
     <dt>
     <a name = "Rotation:setVelocity"></a>
-    <strong>Rotation:setVelocity (r, g, b, a)</strong>
+    <strong>Rotation:setVelocity ([r[, g[, b[, a]]]])</strong>
     </dt>
     <dd>
     Sets the current velocity.
@@ -203,22 +225,31 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">r</span>
+            <span class="types"><span class="type">int</span></span>
          The red component velocity
+         (<em>optional</em>)
         </li>
         <li><span class="parameter">g</span>
+            <span class="types"><span class="type">int</span></span>
          The green component velocity
+         (<em>optional</em>)
         </li>
         <li><span class="parameter">b</span>
+            <span class="types"><span class="type">int</span></span>
          The blue component velocity
+         (<em>optional</em>)
         </li>
         <li><span class="parameter">a</span>
+            <span class="types"><span class="type">int</span></span>
          The alpha component velocity
+         (<em>optional</em>)
         </li>
     </ul>
 
     <h3>Returns:</h3>
     <ol>
 
+           <span class="types"><span class="type">int,int,int,int</span></span>
         The velocity after modification
     </ol>
 
@@ -238,7 +269,8 @@
     <h3>Returns:</h3>
     <ol>
 
-        x,y coordinate velocities
+           <span class="types"><span class="type">int,int,int,int</span></span>
+        The r,g,b,a component velocities
     </ol>
 
 
@@ -256,22 +288,27 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">r</span>
-         The red component acceleration
+            <span class="types"><span class="type">int</span></span>
+        [opt] The red component acceleration
         </li>
         <li><span class="parameter">g</span>
-         The green component acceleration
+            <span class="types"><span class="type">int</span></span>
+        [opt] The green component acceleration
         </li>
         <li><span class="parameter">b</span>
-         The blue component acceleration
+            <span class="types"><span class="type">int</span></span>
+        [opt] The blue component acceleration
         </li>
         <li><span class="parameter">a</span>
-         The alpha component acceleration
+            <span class="types"><span class="type">int</span></span>
+        [opt] The alpha component acceleration
         </li>
     </ul>
 
     <h3>Returns:</h3>
     <ol>
 
+           <span class="types"><span class="type">int,int,int,int</span></span>
         The acceleration after modification
     </ol>
 
@@ -291,6 +328,7 @@
     <h3>Returns:</h3>
     <ol>
 
+           <span class="types"><span class="type">int,int,int,int</span></span>
         r,g,b,a components accelerations
     </ol>
 
@@ -305,7 +343,7 @@
 </div> <!-- id="main" -->
 <div id="about">
 <i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.3</a></i>
-<i style="float:right;">Last updated 2016-02-05 14:20:04 </i>
+<i style="float:right;">Last updated 2016-02-06 00:11:38 </i>
 </div> <!-- id="about" -->
 </div> <!-- id="container" -->
 </body>

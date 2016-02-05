@@ -27,16 +27,21 @@
 <h1>jamkit</h1>
 
 <ul>
-  <li><a href="../index.html">Index</a></li>
+  <li><a href="../doc.html">Index</a></li>
 </ul>
 
+<h2>Contents</h2>
+<ul>
+<li><a href="#"> </a></li>
+</ul>
 
 
 <h2>Classes</h2>
 <ul class="nowrap">
   <li><a href="../classes/Attached.html">Attached</a></li>
   <li><a href="../classes/Body.html">Body</a></li>
-  <li><a href="../classes/Bounds.html">Bounds</a></li>
+  <li><a href="../classes/Renderer.html">Renderer</a></li>
+  <li><a href="../classes/Sprite.html">Sprite</a></li>
   <li><a href="../classes/Color.html">Color</a></li>
   <li><a href="../classes/Position.html">Position</a></li>
   <li><strong>Rotation</strong></li>
@@ -56,21 +61,232 @@
 
 <h1>Class <code>Rotation</code></h1>
 <p>A component that represents the rotation of an entity.</p>
-<p></p>
+<p>
 
 
+<h3>Extends : <a href="../classes/Component.html#">Component</a></h3>
+</p>
+
+
+<h2><a href="#"> </a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#Rotation:set">Rotation:set (a)</a></td>
+	<td class="summary">Sets the current angle.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Rotation:get">Rotation:get ()</a></td>
+	<td class="summary">Gets the current angle.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Rotation:add">Rotation:add (a, delta)</a></td>
+	<td class="summary">Adds values to current position coordinates.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Rotation:setVelocity">Rotation:setVelocity (a)</a></td>
+	<td class="summary">Sets the current angular velocity.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Rotation:getVelocity">Rotation:getVelocity ()</a></td>
+	<td class="summary">Gets the current angular velocity.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Rotation:setAcceleration">Rotation:setAcceleration (a)</a></td>
+	<td class="summary">Sets the current angular acceleration.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Rotation:getAcceleration">Rotation:getAcceleration ()</a></td>
+	<td class="summary">Gets the current angular acceleration.</td>
+	</tr>
+</table>
 
 <br/>
 <br/>
 
 
+    <h2 class="section-header "><a name=""></a> </h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "Rotation:set"></a>
+    <strong>Rotation:set (a)</strong>
+    </dt>
+    <dd>
+    Sets the current angle.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">a</span>
+            <span class="types"><span class="type">number</span></span>
+         The angle
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">number</span></span>
+        The angle after modification
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Rotation:get"></a>
+    <strong>Rotation:get ()</strong>
+    </dt>
+    <dd>
+    Gets the current angle.
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">number</span></span>
+        The angle value.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Rotation:add"></a>
+    <strong>Rotation:add (a, delta)</strong>
+    </dt>
+    <dd>
+    Adds values to current position coordinates.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">a</span>
+            <span class="types"><span class="type">number</span></span>
+         The value to add to current angle
+        </li>
+        <li><span class="parameter">delta</span>
+            <span class="types"><span class="type">number</span></span>
+         <em>(optional)</em> A factor applied to added angle value
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">number</span></span>
+        The angle after modification
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Rotation:setVelocity"></a>
+    <strong>Rotation:setVelocity (a)</strong>
+    </dt>
+    <dd>
+    Sets the current angular velocity.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">a</span>
+            <span class="types"><span class="type">number</span></span>
+         The angular velocity
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">number</span></span>
+        The angular velocity after modification
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Rotation:getVelocity"></a>
+    <strong>Rotation:getVelocity ()</strong>
+    </dt>
+    <dd>
+    Gets the current angular velocity.
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">number</span></span>
+        Then angle velocity
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Rotation:setAcceleration"></a>
+    <strong>Rotation:setAcceleration (a)</strong>
+    </dt>
+    <dd>
+    Sets the current angular acceleration.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">a</span>
+            <span class="types"><span class="type">number</span></span>
+         The angular acceleration
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">number</span></span>
+        The angular acceleration after modification
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Rotation:getAcceleration"></a>
+    <strong>Rotation:getAcceleration ()</strong>
+    </dt>
+    <dd>
+    Gets the current angular acceleration.
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">number</span></span>
+        Then angle acceleration
+    </ol>
+
+
+
+
+</dd>
+</dl>
 
 
 </div> <!-- id="content" -->
 </div> <!-- id="main" -->
 <div id="about">
 <i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.3</a></i>
-<i style="float:right;">Last updated 2016-02-05 14:20:04 </i>
+<i style="float:right;">Last updated 2016-02-06 00:11:38 </i>
 </div> <!-- id="about" -->
 </div> <!-- id="container" -->
 </body>

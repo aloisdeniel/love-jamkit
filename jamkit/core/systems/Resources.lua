@@ -1,5 +1,7 @@
 --- A system that manages resources of all entities. It preloads all its resources and affects it to 
 -- created entities.
+--
+--### Extends : @{System}
 -- @classmod Resources
 
 local Parent = require("jamkit.ecs.System")
