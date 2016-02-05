@@ -31,10 +31,12 @@ end
 --- Adds values to current position coordinates.
 -- @param x The value to add to x current coordinate
 -- @param y The value to add to y current coordinate
+-- @param delta *(optional)* A factor applied to added x and y values
 -- @return The position coordinates after modification
-function Position:add(x,y)
+function Position:add(x,y,delta)
+  delta = delta or 1
   local cx,cy = self:get()
-  self:set(cx+x,cy+y)
+  self:set(cx+(x*delta),cy+(y*delta))
   return self:get()
 end
 
@@ -58,10 +60,12 @@ end
 --- Adds values to current coordinates velocity.
 -- @param x The value to add to x current velocity
 -- @param y The value to add to y current velocity
+-- @param delta *(optional)* A factor applied to added x and y values
 -- @return The velocity after modification
-function Position:addVelocity(x,y)
+function Position:addVelocity(x,y,delta)
+  delta = delta or 1
   local cx,cy = self:getVelocity()
-  self:setVelocity(cx+x,cy+y)
+  self:setVelocity(cx+(x*delta),cy+(y*delta))
   return self:getVelocity()
 end
 
@@ -85,10 +89,12 @@ end
 --- Adds values to current coordinates acceleration.
 -- @param x The value to add to x current acceleration
 -- @param y The value to add to y current acceleration
+-- @param delta *(optional)* A factor applied to added x and y values
 -- @return The acceleration after modification
-function Position:addAcceleration(x,y)
+function Position:addAcceleration(x,y,delta)
+  delta = delta or 1
   local cx,cy = self:getAcceleration()
-  self:setAcceleration(cx+x,cy+y)
+  self:setAcceleration(cx+(x*delta),cy+(y*delta))
   return self:getAcceleration()
 end
 
