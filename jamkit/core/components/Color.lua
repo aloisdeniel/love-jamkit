@@ -10,17 +10,24 @@ function Color:initialize()
   self.store.g = 255
   self.store.b = 255
   self.store.a = 255
+  self.store.velocity = {r=0,g=0,b=0,a=0}
+  self.store.acceleration = {r=0,g=0,b=0,a=0}
 end
 
--- Relative
+--- @section Value
 
 --- Sets the color.
--- @param r red component
--- @param g green component
--- @param b blue component
--- @param a alpha component
+-- @param r The red component
+-- @param g The green component
+-- @param b The blue component
+-- @param a The alpha component
+-- @return The r,g,b,a components after modification
 function Color:set(r,g,b,a)
-  self.store.r, self.store.g, self.store.b, self.store.a = r or 255,g or 255,b or 255,a or 255
+  self.store.r = math.max(0,math.min(255,r or 255))
+  self.store.g = math.max(0,math.min(255,g or 255))
+  self.store.b = math.max(0,math.min(255,b or 255))
+  self.store.a = math.max(0,math.min(255,a or 255))
+  return self:get()
 end
 
 --- Gets the color.
@@ -29,8 +36,73 @@ function Color:get()
   return self.store.r, self.store.g, self.store.b, self.store.a
 end
 
--- Absolute
+--- Adds values to current position coordinates.
+-- @param r The value add to red component
+-- @param g The value add to green component
+-- @param b The value add to blue component
+-- @param a The value add to alpha component
+-- @param delta *(optional)* A factor applied to added values
+-- @return The r,g,b,a components after modification
+function Color:add(r,g,b,a,delta)
+  delta = delta or 1
+  a = a or 0
+  r = r or 0
+  g = g or r
+  b = b or r
+  local cr,cg,cb,ca = self:get()
+  self:set(cr+(r*delta),cg+(g*delta),cb+(b*delta),ca+(a*delta))
+  return self:get()
+end
 
+--- @section Velocity
+
+--- Sets the current velocity.
+-- @param r The red component velocity
+-- @param g The green component velocity
+-- @param b The blue component velocity
+-- @param a The alpha component velocity
+-- @return The velocity after modification
+function Rotation:setVelocity(r,g,b,a)
+  local vel = self.store.velocity
+  vel.r = a or 0
+  vel.r = r or 0
+  vel.g = g or r
+  vel.b = b or r
+  return self:getVelocity()
+end
+
+--- Gets the current velocity.
+-- @return x,y coordinate velocities
+function Rotation:getVelocity()
+  local vel = self.store.velocity
+  return vel.r,vel.g,vel.b,vel.a
+end
+
+--- @section Acceleration
+
+--- Sets the current acceleration.
+-- @param r The red component acceleration
+-- @param g The green component acceleration
+-- @param b The blue component acceleration
+-- @param a The alpha component acceleration
+-- @return The acceleration after modification
+function Rotation:setAcceleration(r,g,b,a)
+  local acc = self.store.acceleration
+  acc.r = a or 0
+  acc.r = r or 0
+  acc.g = g or r
+  acc.b = b or r
+  return self:getAcceleration()
+end
+
+--- Gets the current acceleration.
+-- @return r,g,b,a components accelerations
+function Rotation:getAcceleration()
+  local acc = self.store.acceleration
+  return acc.r,acc.g,acc.b,acc.a
+end
+
+--[[ -- Must be in systems (Absolute)
 function Color:_getParentValue()
   local entity = self.getEntity()
   if entity then
@@ -59,26 +131,6 @@ function Color:getAbsolute()
   b = (b * pb) / 255
   a = (a * pa) / 255
   return r,g,b,a
-end
-
--- Velocity
-
-function Rotation:setVelocity(r,g,b,a)
-  self.velocity = a
-end
-
-function Rotation:getVelocity()
-  return self.velocity
-end
-
--- Acceleration
-
-function Rotation:setAcceleration(a)
-  self.acceleration = a
-end
-
-function Rotation:getAcceleration()
-  return self.acceleration
-end
+end ]]
 
 return Color

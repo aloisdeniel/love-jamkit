@@ -32,7 +32,7 @@
 
 <h2>Contents</h2>
 <ul>
-<li><a href="#Methods">Methods</a></li>
+<li><a href="#"> </a></li>
 </ul>
 
 
@@ -63,7 +63,7 @@
 <p></p>
 
 
-<h2><a href="#Methods">Methods</a></h2>
+<h2><a href="#"> </a></h2>
 <table class="function_list">
 	<tr>
 	<td class="name" nowrap><a href="#Color:set">Color:set (r, g, b, a)</a></td>
@@ -73,13 +73,33 @@
 	<td class="name" nowrap><a href="#Color:get">Color:get ()</a></td>
 	<td class="summary">Gets the color.</td>
 	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Color:add">Color:add (r, g, b, a, delta)</a></td>
+	<td class="summary">Adds values to current position coordinates.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Rotation:setVelocity">Rotation:setVelocity (r, g, b, a)</a></td>
+	<td class="summary">Sets the current velocity.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Rotation:getVelocity">Rotation:getVelocity ()</a></td>
+	<td class="summary">Gets the current velocity.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Rotation:setAcceleration">Rotation:setAcceleration (r, g, b, a)</a></td>
+	<td class="summary">Sets the current acceleration.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Rotation:getAcceleration">Rotation:getAcceleration ()</a></td>
+	<td class="summary">Gets the current acceleration.</td>
+	</tr>
 </table>
 
 <br/>
 <br/>
 
 
-    <h2 class="section-header "><a name="Methods"></a>Methods</h2>
+    <h2 class="section-header "><a name=""></a> </h2>
 
     <dl class="function">
     <dt>
@@ -93,19 +113,24 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">r</span>
-         red component
+         The red component
         </li>
         <li><span class="parameter">g</span>
-         green component
+         The green component
         </li>
         <li><span class="parameter">b</span>
-         blue component
+         The blue component
         </li>
         <li><span class="parameter">a</span>
-         alpha component
+         The alpha component
         </li>
     </ul>
 
+    <h3>Returns:</h3>
+    <ol>
+
+        The r,g,b,a components after modification
+    </ol>
 
 
 
@@ -130,6 +155,149 @@
 
 
 </dd>
+    <dt>
+    <a name = "Color:add"></a>
+    <strong>Color:add (r, g, b, a, delta)</strong>
+    </dt>
+    <dd>
+    Adds values to current position coordinates.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">r</span>
+         The value add to red component
+        </li>
+        <li><span class="parameter">g</span>
+         The value add to green component
+        </li>
+        <li><span class="parameter">b</span>
+         The value add to blue component
+        </li>
+        <li><span class="parameter">a</span>
+         The value add to alpha component
+        </li>
+        <li><span class="parameter">delta</span>
+         *(optional)* A factor applied to added values
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        The r,g,b,a components after modification
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Rotation:setVelocity"></a>
+    <strong>Rotation:setVelocity (r, g, b, a)</strong>
+    </dt>
+    <dd>
+    Sets the current velocity.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">r</span>
+         The red component velocity
+        </li>
+        <li><span class="parameter">g</span>
+         The green component velocity
+        </li>
+        <li><span class="parameter">b</span>
+         The blue component velocity
+        </li>
+        <li><span class="parameter">a</span>
+         The alpha component velocity
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        The velocity after modification
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Rotation:getVelocity"></a>
+    <strong>Rotation:getVelocity ()</strong>
+    </dt>
+    <dd>
+    Gets the current velocity.
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        x,y coordinate velocities
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Rotation:setAcceleration"></a>
+    <strong>Rotation:setAcceleration (r, g, b, a)</strong>
+    </dt>
+    <dd>
+    Sets the current acceleration.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">r</span>
+         The red component acceleration
+        </li>
+        <li><span class="parameter">g</span>
+         The green component acceleration
+        </li>
+        <li><span class="parameter">b</span>
+         The blue component acceleration
+        </li>
+        <li><span class="parameter">a</span>
+         The alpha component acceleration
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        The acceleration after modification
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Rotation:getAcceleration"></a>
+    <strong>Rotation:getAcceleration ()</strong>
+    </dt>
+    <dd>
+    Gets the current acceleration.
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        r,g,b,a components accelerations
+    </ol>
+
+
+
+
+</dd>
 </dl>
 
 
@@ -137,7 +305,7 @@
 </div> <!-- id="main" -->
 <div id="about">
 <i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.3</a></i>
-<i style="float:right;">Last updated 2016-02-05 08:44:31 </i>
+<i style="float:right;">Last updated 2016-02-05 14:20:04 </i>
 </div> <!-- id="about" -->
 </div> <!-- id="container" -->
 </body>
