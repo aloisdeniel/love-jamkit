@@ -1,19 +1,32 @@
-local Parent = require("jamkit.ecs.Component")
-local Bounds = class('Bounds',Parent)
+--- A component that indicates that an entity is attached to another.
+-- @classmod Attached
 
-function Bounds:initialize()
+local Parent = require("jamkit.ecs.Component")
+local Attached = class('Attached',Parent)
+
+function Attached:initialize()
   Parent.initialize(self)
-  self.store.parentId = nil
+  self.store.parentUid = nil
   self.parent = nil
 end
 
-function Bound:setParentId(id)
-  assert(not self.store.parentId, "Already a parent identifier")
-  self.store.parentId = id
+--- Gets the parent's unique identifier.
+-- @return The parent unique identifier.
+function Attached:getParentUid()
+  return self.store.parentUid
 end
 
-function Bound:isParentAttached()
-  return self.store.parentId and self.parent
+--- Gets the parent entity.
+-- @return The parent entity
+function Attached:getParent()
+  return self.parent
 end
 
-return Bounds
+--- Sets to which other entity the owner's entity is attached to.
+-- @param parent The entity to which this entity is attached to
+function Attached:setParent(parent)
+  self.parent = parent
+  self.store.parentUid = parent.uid
+end
+
+return Attached

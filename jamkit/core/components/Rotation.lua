@@ -1,3 +1,6 @@
+--- A component that represents the rotation of an entity.
+-- @classmod Rotation
+
 local Parent = require("jamkit.ecs.Component")
 local Rotation = class('Rotation',Parent)
 

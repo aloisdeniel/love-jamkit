@@ -1,3 +1,6 @@
+--- A component that represents the current position of an entity.
+-- @classmod Position
+
 local Parent = require("jamkit.ecs.Component")
 local Position = class('Position',Parent)
 

@@ -1,5 +1,31 @@
+local bump = require('lib.bump')
+local Body = require('jamkit.core.components.Body')
+
 local Parent = require("jamkit.ecs.System")
 local Physics = class("Inputs", Parent)
+
+function Physics:initialize(worldCellSize)
+  Parent.initialize(self)
+  self.world = bump.newWorld(worldCellSize or 64)
+end
+
+function System:isEntitySupported(e)
+  return e:hasComponent(Body)
+end
+
+function System:addEntity(e)
+  Parent.addEntity(e)
+  local w,h = e.components.body:getDimensions()
+  self.world:add(component, x, y, w,h)
+end
+
+function System:removeEntity(e)
+  Parent.removeEntity(e)
+end
+
+function System:updateEntity(e,dt)
+  
+end
 
 function Physics:updateTransform(entity,dt)
   

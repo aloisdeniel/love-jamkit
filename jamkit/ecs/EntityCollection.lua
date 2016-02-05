@@ -34,4 +34,8 @@ function EntityCollection:getEntities(l,t,w,h, filter)
   return result
 end
 
+function EntityCollection:forEach(f)
+  for _,e in ipairs(self.entities) do f(i,e) end
+end
+
 return EntityCollection

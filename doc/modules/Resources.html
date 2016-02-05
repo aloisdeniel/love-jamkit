@@ -1,0 +1,682 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>jamkit - documentation</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>jamkit</h1>
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><strong>Resources</strong></li>
+  <li><a href="../modules/jamkit.html">jamkit</a></li>
+</ul>
+<h2>Classes</h2>
+<ul class="nowrap">
+  <li><a href="../classes/Attached.html">Attached</a></li>
+  <li><a href="../classes/Body.html">Body</a></li>
+  <li><a href="../classes/Bounds.html">Bounds</a></li>
+  <li><a href="../classes/Color.html">Color</a></li>
+  <li><a href="../classes/Position.html">Position</a></li>
+  <li><a href="../classes/Rotation.html">Rotation</a></li>
+  <li><a href="../classes/Scale.html">Scale</a></li>
+  <li><a href="../classes/Component.html">Component</a></li>
+  <li><a href="../classes/Entity.html">Entity</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>Resources</code></h1>
+<p>A system that manages resources of all entities.</p>
+<p> It preloads all its resources and affects it to
+ created entities.</p>
+
+
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#_register">_register (rtype, id, value)</a></td>
+	<td class="summary">Registers a resource of type.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#registerData">registerData (id, path)</a></td>
+	<td class="summary">Registering a lua table.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#registerText">registerText (id, path)</a></td>
+	<td class="summary">Registering a text.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#registerImage">registerImage (id, path)</a></td>
+	<td class="summary">Registering an image.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#registerFont">registerFont (id, path, size)</a></td>
+	<td class="summary">Registering an font.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#registerShader">registerShader (id, path)</a></td>
+	<td class="summary">Registering an shader.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#registerSound">registerSound (id, path)</a></td>
+	<td class="summary">Registering a sound.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#registerMusic">registerMusic (id, path)</a></td>
+	<td class="summary">Registering a music.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#registerPiecesOfData">registerPiecesOfData (data)</a></td>
+	<td class="summary">Registering multiple lua tables at once.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#registerTexts">registerTexts (data)</a></td>
+	<td class="summary">Registering multiple texts at once.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#registerImages">registerImages (images)</a></td>
+	<td class="summary">Registering multiple images at once.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#registerFonts">registerFonts (data)</a></td>
+	<td class="summary">Registering multiple fonts at once.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#registerShaders">registerShaders (shaders)</a></td>
+	<td class="summary">Registering multiple shaders at once.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#registerSounds">registerSounds (sounds)</a></td>
+	<td class="summary">Registering multiple sounds at once.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#registerMusics">registerMusics (musics)</a></td>
+	<td class="summary">Registering multiple musics at once.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#data">data (The)</a></td>
+	<td class="summary">Gets a lua table.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#text">text (The)</a></td>
+	<td class="summary">Gets a text content.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#image">image (The)</a></td>
+	<td class="summary">Gets an image.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#font">font (The)</a></td>
+	<td class="summary">Gets a font.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#shader">shader (The)</a></td>
+	<td class="summary">Gets a shader.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#sound">sound (The)</a></td>
+	<td class="summary">Gets a sound (static source).</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#music">music (The)</a></td>
+	<td class="summary">Gets a music (stream source).</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header "><a name="Functions"></a>Functions</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "_register"></a>
+    <strong>_register (rtype, id, value)</strong>
+    </dt>
+    <dd>
+    Registers a resource of type.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">rtype</span>
+
+        </li>
+        <li><span class="parameter">id</span>
+
+        </li>
+        <li><span class="parameter">value</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "registerData"></a>
+    <strong>registerData (id, path)</strong>
+    </dt>
+    <dd>
+    Registering a lua table.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+         The identifier of the resource
+        </li>
+        <li><span class="parameter">path</span>
+         The file path to the loaded resource.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "registerText"></a>
+    <strong>registerText (id, path)</strong>
+    </dt>
+    <dd>
+    Registering a text.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+         The identifier of the resource
+        </li>
+        <li><span class="parameter">path</span>
+         The file path to the loaded resource.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "registerImage"></a>
+    <strong>registerImage (id, path)</strong>
+    </dt>
+    <dd>
+    Registering an image.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+         The identifier of the resource
+        </li>
+        <li><span class="parameter">path</span>
+         The file path to the loaded resource.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "registerFont"></a>
+    <strong>registerFont (id, path, size)</strong>
+    </dt>
+    <dd>
+    Registering an font.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+         The identifier of the resource
+        </li>
+        <li><span class="parameter">path</span>
+         The file path to the loaded resource
+        </li>
+        <li><span class="parameter">size</span>
+         The size of the font
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "registerShader"></a>
+    <strong>registerShader (id, path)</strong>
+    </dt>
+    <dd>
+    Registering an shader.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+         The identifier of the resource
+        </li>
+        <li><span class="parameter">path</span>
+         The file path to the loaded resource.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "registerSound"></a>
+    <strong>registerSound (id, path)</strong>
+    </dt>
+    <dd>
+    Registering a sound.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+         The identifier of the resource
+        </li>
+        <li><span class="parameter">path</span>
+         The file path to the loaded resource.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "registerMusic"></a>
+    <strong>registerMusic (id, path)</strong>
+    </dt>
+    <dd>
+    Registering a music.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+         The identifier of the resource
+        </li>
+        <li><span class="parameter">path</span>
+         The file path to the loaded resource.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "registerPiecesOfData"></a>
+    <strong>registerPiecesOfData (data)</strong>
+    </dt>
+    <dd>
+    Registering multiple lua tables at once.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">data</span>
+         A table with id as key, and path as value of each entry
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "registerTexts"></a>
+    <strong>registerTexts (data)</strong>
+    </dt>
+    <dd>
+    Registering multiple texts at once.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">data</span>
+         A texts with id as key, and path as value of each entry
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "registerImages"></a>
+    <strong>registerImages (images)</strong>
+    </dt>
+    <dd>
+    Registering multiple images at once.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">images</span>
+         A table with id as key, and path as value of each entry
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "registerFonts"></a>
+    <strong>registerFonts (data)</strong>
+    </dt>
+    <dd>
+    Registering multiple fonts at once.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">data</span>
+         A table with id as key, and a table with path and size entries.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "registerShaders"></a>
+    <strong>registerShaders (shaders)</strong>
+    </dt>
+    <dd>
+    Registering multiple shaders at once.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">shaders</span>
+         A table with id as key, and path as value of each entry
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "registerSounds"></a>
+    <strong>registerSounds (sounds)</strong>
+    </dt>
+    <dd>
+    Registering multiple sounds at once.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">sounds</span>
+         A table with id as key, and path as value of each entry
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "registerMusics"></a>
+    <strong>registerMusics (musics)</strong>
+    </dt>
+    <dd>
+    Registering multiple musics at once.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">musics</span>
+         A table with id as key, and path as value of each entry
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "data"></a>
+    <strong>data (The)</strong>
+    </dt>
+    <dd>
+    Gets a lua table.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">The</span>
+         identifier of the resource
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        A lua table
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "text"></a>
+    <strong>text (The)</strong>
+    </dt>
+    <dd>
+    Gets a text content.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">The</span>
+         identifier of the resource
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        A string with the requested text.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "image"></a>
+    <strong>image (The)</strong>
+    </dt>
+    <dd>
+    Gets an image.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">The</span>
+         identifier of the resource
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        The image and its quad atlas if available
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "font"></a>
+    <strong>font (The)</strong>
+    </dt>
+    <dd>
+    Gets a font.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">The</span>
+         identifier of the resource
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        The font object.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "shader"></a>
+    <strong>shader (The)</strong>
+    </dt>
+    <dd>
+    Gets a shader.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">The</span>
+         identifier of the resource
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        The shader object.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "sound"></a>
+    <strong>sound (The)</strong>
+    </dt>
+    <dd>
+    Gets a sound (static source).
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">The</span>
+         identifier of the resource
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        The source object.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "music"></a>
+    <strong>music (The)</strong>
+    </dt>
+    <dd>
+    Gets a music (stream source).
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">The</span>
+         identifier of the resource
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        The source object.
+    </ol>
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.3</a></i>
+<i style="float:right;">Last updated 2016-02-05 00:35:49 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

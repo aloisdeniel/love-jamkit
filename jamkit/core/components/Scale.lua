@@ -1,3 +1,6 @@
+--- A component that represents the scale of an entity.
+-- @classmod Scale
+
 local Parent = require("jamkit.ecs.Component")
 local Position = class('Scale',Parent)
 

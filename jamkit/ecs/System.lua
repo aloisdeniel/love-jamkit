@@ -6,6 +6,10 @@ function System:initialize()
   self.entities = EntityCollection:new()
 end
 
+function System:destroy()
+  self.entities = EntityCollection:new()
+end
+
 function System:isEntitySupported(e)
   return true
 end
@@ -20,8 +24,25 @@ function System:removeEntity(e)
   self.entities:remove(e)
 end
 
-function System:update(dt)
+function System:load()
+  
+end
 
+function System:unload()
+  
+end
+
+function System:update(dt)
+  local _self = self
+  self.entities:forEach(function(i,e) _self:updateEntity(e,dt) end)
+end
+
+function System:updateEntity(e,dt)
+  
+end
+
+function System:draw(e,dt)
+  
 end
 
 return System

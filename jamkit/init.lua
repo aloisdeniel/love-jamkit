@@ -1,3 +1,8 @@
+--- The main module
+-- @author Aloïs Deniel (@aloisdeniel)
+-- @license MIT
+-- @module jamkit
+
 -- Global requires (discouraged but much more simplier for this frequently used modules)
 
 inspect =  require("jamkit.lib.inspect")

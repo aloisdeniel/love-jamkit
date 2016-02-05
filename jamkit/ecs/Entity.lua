@@ -1,7 +1,11 @@
+--- Represents any object of the world. Components may be attached to it to add behaviors
+-- (like a position, a renderer or a physics body).
+-- @classmod Entity
+
 local Component = require("jamkit.ecs.Component")
 
 local Entity = class('Entity')
-
+  
 Entity.static.lastUid = 0
 Entity.static.createUid = function() 
   Entity.static.lastUid = Entity.static.lastUid + 1
@@ -9,14 +13,26 @@ Entity.static.createUid = function()
 end
 
 function Entity:initialize()
-  self.uid = Entity.static.createUid()
-  self.parent = nil
+
+  --- The unique generated identifier of the entity.
+  self.uid = Entity.static.createUid() 
+  
+  --- Indicates whether the entity is visible.
   self.isVisible = true
+  
+  --- All added components are accessible 
+  -- through this table. Note that their keys are the name of 
+  -- their class with a lowercase first letter 
+  -- (i.e. "Position" > "components.position")
+  self.components = {} 
+  
+  --- Indicates the entity is destroyed and should be removed from the world.
   self.isDestroyed = false
-  self.scripts = {}
-  self.components = {}
+
 end
 
+--- Clones the entity. It creates an entity of the same class and clone each of its components.
+-- @return The newly cloned entity.
 function Entity:clone()
   local clone = self.class:new()
   -- Cloning all components
@@ -27,13 +43,13 @@ function Entity:clone()
   return clone
 end
 
--- Serialization (all components)
-
+--- Extracts the entity state as a serializable table. All information for this 
+-- entity to be restored is present in this table : uid, component stores, ...
+-- @return A state table.
 function Entity:serialize()
   if not self.isDestroyed then
     local result = {
       uid= self.uid,
-      layer = self.layer,
       components = {}
     }
     for name, component in pairs(self.components) do
@@ -45,6 +61,7 @@ function Entity:serialize()
   end
 end
 
+--- Restores the state of an entity from a state table.
 function Entity:deserialize(data)
   if data.uid then
     self.uid = data.uid
@@ -56,33 +73,26 @@ function Entity:deserialize(data)
   end
 end
 
--- Scripts
-
-function Entity:addScript(script)
-  assert((not script.entity),"script is already attached to an entity")
-  script.entity = self
-  self.scripts[script] = true
-  script:onAttached()
-end
-
-function Entity:removedScript(script)
-  assert(self.scripts[script],"script isn't attached to this entity")
-  self.scripts[script] = nil
-  script.entity = nil
-  script:onDettached()
-end
-
 -- Components
 
+--- Indicates whether this entity has a component of the given class.
+-- @param component A component class
+-- @return false if the entity hasn't any component of the given component type.
 function Entity:has(component)
   return self:get(component)
 end
 
+--- Gets the entity with given component type.
+-- @param component A component class
+-- @return The component if owned, else nil
 function Entity:get(component)
   local name = Component.toPropertyName(component)
   return self.components[name]
 end
 
+--- Adds the component to the entity. 
+-- Note: an entity can only have one component of each type. 
+-- @param component The component instance.
 function Entity:add(component)
   local name = Component.toPropertyName(component)
   assert((not self.components[name]), "A " .. name .. " component has already been added to this entity")
@@ -90,6 +100,8 @@ function Entity:add(component)
   self.components[name] = component
 end
 
+--- Removes the component to the entity.  
+-- @param component The component instance, or type.
 function Entity:remove(component)
   local name = Component.toPropertyName(component)
   assert(self.components[name] == component, "The given " .. name .. " component doesn't seem to be present")

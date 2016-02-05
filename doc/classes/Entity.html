@@ -1,0 +1,359 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>jamkit - documentation</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>jamkit</h1>
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Tables">Tables</a></li>
+<li><a href="#Fields">Fields</a></li>
+<li><a href="#Methods">Methods</a></li>
+</ul>
+
+
+<h2>Classes</h2>
+<ul class="nowrap">
+  <li><a href="../classes/Attached.html">Attached</a></li>
+  <li><a href="../classes/Body.html">Body</a></li>
+  <li><a href="../classes/Bounds.html">Bounds</a></li>
+  <li><a href="../classes/Color.html">Color</a></li>
+  <li><a href="../classes/Position.html">Position</a></li>
+  <li><a href="../classes/Rotation.html">Rotation</a></li>
+  <li><a href="../classes/Scale.html">Scale</a></li>
+  <li><a href="../classes/Resources.html">Resources</a></li>
+  <li><a href="../classes/Component.html">Component</a></li>
+  <li><strong>Entity</strong></li>
+</ul>
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><a href="../modules/jamkit.html">jamkit</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Class <code>Entity</code></h1>
+<p>Represents any object of the world.</p>
+<p> Components may be attached to it to add behaviors
+ (like a position, a renderer or a physics body).</p>
+
+
+<h2><a href="#Tables">Tables</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#self.components">self.components</a></td>
+	<td class="summary">All added components are accessible
+ through this table.</td>
+	</tr>
+</table>
+<h2><a href="#Fields">Fields</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#self.uid">self.uid</a></td>
+	<td class="summary">The unique generated identifier of the entity.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#self.isVisible">self.isVisible</a></td>
+	<td class="summary">Indicates whether the entity is visible.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#self.isDestroyed">self.isDestroyed</a></td>
+	<td class="summary">Indicates the entity is destroyed and should be removed from the world.</td>
+	</tr>
+</table>
+<h2><a href="#Methods">Methods</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#Entity:clone">Entity:clone ()</a></td>
+	<td class="summary">Clones the entity.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Entity:serialize">Entity:serialize ()</a></td>
+	<td class="summary">Extracts the entity state as a serializable table.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Entity:deserialize">Entity:deserialize (data)</a></td>
+	<td class="summary">Restores the state of an entity from a state table.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Entity:has">Entity:has (component)</a></td>
+	<td class="summary">Indicates whether this entity has a component of the given class.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Entity:get">Entity:get (component)</a></td>
+	<td class="summary">Gets the entity with given component type.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Entity:add">Entity:add (component)</a></td>
+	<td class="summary">Adds the component to the entity.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Entity:remove">Entity:remove (component)</a></td>
+	<td class="summary">Removes the component to the entity.</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header "><a name="Tables"></a>Tables</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "self.components"></a>
+    <strong>self.components</strong>
+    </dt>
+    <dd>
+    All added components are accessible
+ through this table.  Note that their keys are the name of
+ their class with a lowercase first letter
+ (i.e. "Position" > "components.position")
+
+
+
+
+
+
+
+</dd>
+</dl>
+    <h2 class="section-header "><a name="Fields"></a>Fields</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "self.uid"></a>
+    <strong>self.uid</strong>
+    </dt>
+    <dd>
+    The unique generated identifier of the entity.
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "self.isVisible"></a>
+    <strong>self.isVisible</strong>
+    </dt>
+    <dd>
+    Indicates whether the entity is visible.
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "self.isDestroyed"></a>
+    <strong>self.isDestroyed</strong>
+    </dt>
+    <dd>
+    Indicates the entity is destroyed and should be removed from the world.
+
+
+
+
+
+
+
+</dd>
+</dl>
+    <h2 class="section-header "><a name="Methods"></a>Methods</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "Entity:clone"></a>
+    <strong>Entity:clone ()</strong>
+    </dt>
+    <dd>
+    Clones the entity.  It creates an entity of the same class and clone each of its components.
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        The newly cloned entity.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Entity:serialize"></a>
+    <strong>Entity:serialize ()</strong>
+    </dt>
+    <dd>
+    Extracts the entity state as a serializable table.  All information for this
+ entity to be restored is present in this table : uid, component stores, ...
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        A state table.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Entity:deserialize"></a>
+    <strong>Entity:deserialize (data)</strong>
+    </dt>
+    <dd>
+    Restores the state of an entity from a state table.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">data</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Entity:has"></a>
+    <strong>Entity:has (component)</strong>
+    </dt>
+    <dd>
+    Indicates whether this entity has a component of the given class.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">component</span>
+         A component class
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        false if the entity hasn't any component of the given component type.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Entity:get"></a>
+    <strong>Entity:get (component)</strong>
+    </dt>
+    <dd>
+    Gets the entity with given component type.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">component</span>
+         A component class
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        The component if owned, else nil
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Entity:add"></a>
+    <strong>Entity:add (component)</strong>
+    </dt>
+    <dd>
+    Adds the component to the entity.
+ Note: an entity can only have one component of each type.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">component</span>
+         The component instance.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Entity:remove"></a>
+    <strong>Entity:remove (component)</strong>
+    </dt>
+    <dd>
+    Removes the component to the entity.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">component</span>
+         The component instance, or type.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.3</a></i>
+<i style="float:right;">Last updated 2016-02-05 00:37:26 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

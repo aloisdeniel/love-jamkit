@@ -1,3 +1,6 @@
+--- A component that represents the current color of an entity.
+-- @classmod Color
+
 local Parent = require("jamkit.ecs.Component")
 local Color = class('Color',Parent)
 
@@ -11,10 +14,17 @@ end
 
 -- Relative
 
+--- Sets the color.
+-- @param r red component
+-- @param g green component
+-- @param b blue component
+-- @param a alpha component
 function Color:set(r,g,b,a)
   self.store.r, self.store.g, self.store.b, self.store.a = r or 255,g or 255,b or 255,a or 255
 end
 
+--- Gets the color.
+-- @return r,g,b,a components.
 function Color:get()
   return self.store.r, self.store.g, self.store.b, self.store.a
 end

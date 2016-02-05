@@ -1,3 +1,8 @@
+--- A component can be attached to an entity to add functionalities to
+-- an entity. It can also be serialized through its store, and restored.
+-- All components are updated through systems.
+-- @classmod Component
+
 local Component = class('Component')
 
 Component.static.toPropertyName = function(component)
@@ -38,9 +43,20 @@ function Component:setEntity(e)
   if e then
     assert((not self.entity), "The component has already been added to an other entity")
     self.entity = e
-  else
+    self:added(e)
+  elseif self.entity then
+    e = self.entity
     self.entity = nil
+    self:removed(e)
   end
+end
+
+function Component:added(e)
+  
+end
+
+function Component:removed(e)
+  
 end
 
 return Component
